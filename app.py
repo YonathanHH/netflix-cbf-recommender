@@ -6,14 +6,14 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MultiLabelBinarizer
 
-# ─── Page Config ──────────────────────────────────────────────
+# Page Config
 st.set_page_config(
-    page_title="Netflix Movie Recommender",
+    page_title="Netflix Movie Recommender by Hary",
     page_icon="🎬",
     layout="centered"
 )
 
-# ─── Load & Preprocess ────────────────────────────────────────
+# Load & Preprocess 
 @st.cache_data
 def load_and_build():
     df = pd.read_csv('NetFlix.csv')

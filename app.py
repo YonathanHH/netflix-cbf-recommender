@@ -16,7 +16,7 @@ st.set_page_config(
 # ─── Load & Preprocess ────────────────────────────────────────
 @st.cache_data
 def load_and_build():
-    df = pd.read_csv('netflix_titles.csv')
+    df = pd.read_csv('NetFlix.csv')
     movies = df[df['type'] == 'Movie'].copy().reset_index(drop=True)
 
     genre_col = 'listed_in' if 'listed_in' in movies.columns else 'genre'
@@ -52,14 +52,8 @@ def load_and_build():
     return movies, genre_col, feature_matrix, title_to_idx
 
 
-# ─── Core CBF Logic ───────────────────────────────────────────
+# Core CBF Logic
 def build_user_vector(watched_ratings, feature_matrix, title_to_idx):
-    """
-    Rating-weighted user feature vector (lecture pipeline):
-      1. feature_row × rating  for each watched movie
-      2. Sum all weighted rows
-      3. Normalize ÷ total rating sum
-    """
     weighted_sum = np.zeros(feature_matrix.shape[1])
     total_rating = 0
 
@@ -94,20 +88,20 @@ def recommend(watched_ratings, movies, genre_col, feature_matrix, title_to_idx, 
     return result.reset_index(drop=True)
 
 
-# ─── Load Data ────────────────────────────────────────────────
+#  Load Data
 movies, genre_col, feature_matrix, title_to_idx = load_and_build()
 all_titles = movies['title'].sort_values().tolist()
 
-# ─── UI ───────────────────────────────────────────────────────
+# UI
 st.title('🎬 Netflix Movie Recommender')
 st.markdown('**Content-Based Filtering** — Rating-Weighted User Feature Vector + Cosine Similarity')
 st.markdown('---')
 
-# ── Session state for watch list ──────────────────────────────
+# Session state for watch list
 if 'watch_list' not in st.session_state:
     st.session_state.watch_list = {}  # {title: rating}
 
-# ── Add a movie ───────────────────────────────────────────────
+# Add a movie
 st.subheader('📋 Your Watch History')
 st.markdown('Search and add movies you have watched, then rate them.')
 
@@ -135,7 +129,7 @@ if selected:
         st.session_state.watch_list[selected] = rating
         st.success(f'Added "{selected}" with rating {rating}/10')
 
-# ── Show current watch list ───────────────────────────────────
+# Show current watch list
 if st.session_state.watch_list:
     st.markdown('**🎞️ Movies in your list:**')
     watch_df = pd.DataFrame(

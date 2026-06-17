@@ -1,10 +1,10 @@
-# 🎬 Netflix Content-Based Filtering Recommender
+# Netflix Content-Based Filtering Recommender
 
 A portfolio project demonstrating a **Content-Based Filtering (CBF) Recommendation System** built on the Netflix Movies Dataset using **TF-IDF Vectorization** and **Cosine Similarity**.
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 This project simulates a Netflix-style recommendation engine that suggests movies based on:
 - **Genre**
@@ -17,7 +17,7 @@ Two recommendation modes are implemented:
 
 ---
 
-## 🧠 Methodology
+## Methodology
 
 Both modes follow the **same rating-weighted CBF pipeline**, consistent with the Content-Based Filtering lecture framework:
 
@@ -47,13 +47,13 @@ Top-N Recommendations
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 netflix-cbf-recommender/
 │
-├── notebook/
-│   └── netflix_cbf.ipynb        # Main analysis notebook
+├── netflix_cbf.ipynb             # Main analysis notebook
+├── NetFlix.csv                   # raw csv data used for streamlit and notebook
 ├── app.py                        # Streamlit web application
 ├── requirements.txt              # Python dependencies
 └── README.md
@@ -61,36 +61,13 @@ netflix-cbf-recommender/
 
 ---
 
-## 🚀 How to Run
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/YonathanHH/netflix-cbf-recommender.git
-cd netflix-cbf-recommender
-```
-
-### 2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Download the dataset
-Download the Netflix dataset from [Kaggle](https://www.kaggle.com/datasets/imtkaggleteam/netflix) and place the CSV file in the root directory as `netflix_titles.csv`.
-
-### 4. Run the Streamlit app
-```bash
-streamlit run app.py
-```
-
----
-
-## 📊 Dataset
+## Dataset
 - **Source**: [Netflix Movies & TV Shows – Kaggle](https://www.kaggle.com/datasets/imtkaggleteam/netflix)
 - **Features Used**: `title`, `type`, `listed_in` (genre), `country`, `description`
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 - Python 3.10+
 - Pandas, NumPy, SciPy
 - Scikit-learn (TF-IDF, Cosine Similarity, MultiLabelBinarizer)

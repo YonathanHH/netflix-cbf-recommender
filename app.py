@@ -19,7 +19,7 @@ def load_and_build():
     df = pd.read_csv('NetFlix.csv')
     movies = df[df['type'] == 'Movie'].copy().reset_index(drop=True)
 
-    genre_col = 'listed_in' if 'listed_in' in movies.columns else 'genre'
+    genre_col = 'listed_in' if 'listed_in' in movies.columns else 'genres'
     movies['description'] = movies['description'].fillna('')
     movies['country']     = movies['country'].fillna('Unknown')
     movies[genre_col]     = movies[genre_col].fillna('Unknown')
